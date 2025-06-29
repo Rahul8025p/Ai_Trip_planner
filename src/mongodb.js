@@ -1,17 +1,14 @@
 const mongoose = require("mongoose");
 require("dotenv").config(); // Load environment variables
 
-// Connect to MongoDB Atlas using environment variable
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => {
-  console.log("✅ MongoDB Atlas Connected");
-})
-.catch((err) => {
-  console.error("❌ Failed to Connect", err);
-});
+// ✅ Recommended: Remove deprecated options
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => {
+    console.log("✅ MongoDB Atlas Connected");
+  })
+  .catch((err) => {
+    console.error("❌ Failed to Connect", err);
+  });
 
 // Review schema
 const ReviewSchema = new mongoose.Schema({
@@ -27,7 +24,7 @@ const ReviewSchema = new mongoose.Schema({
   },
   photoPath: {
     type: String,
-    required: function() { return !!this.photoPath; }
+    required: false
   },
   createdAt: {
     type: Date,
