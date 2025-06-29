@@ -167,3 +167,44 @@ button {
     text-decoration: none;
     color: #fff;
 }
+@media (max-width: 768px) {
+  .settings-panel {
+    flex-direction: column;
+  }
+
+  .sidebar, .form-section {
+    width: 100%;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .button-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .profile img {
+    width: 70px;
+    height: 70px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .form-section h2 {
+    font-size: 18px;
+  }
+
+  .menu li {
+    font-size: 15px;
+    padding: 8px;
+  }
+}
