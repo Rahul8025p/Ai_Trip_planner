@@ -101,3 +101,18 @@ h1 {
 .trip-card-link:focus {
     outline: none;
 }
+
+@media (max-width: 768px) {
+    .trip-list {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 20px;
+    }
+
+    .trip-details h2 {
+        font-size: 16px;
+    }
+
+    .trip-details p {
+        font-size: 13px;
+    }
+}
