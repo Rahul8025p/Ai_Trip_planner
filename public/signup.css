@@ -1,5 +1,5 @@
 body {
-    background-image: url('Screenshot\ 2024-09-11\ 121636.png');
+    background-image: url('Screenshot 2024-09-11 121636.png');
     background-size: cover;
     background-position: center;
     font-family: Arial, sans-serif;
@@ -7,8 +7,8 @@ body {
     padding: 0;
     height: 100vh;
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    justify-content: center;
+    align-items: center;
     background-attachment: scroll;
     animation: fadeInBackground 2s ease-in-out;
 }
@@ -61,7 +61,7 @@ input[type="text"] {
 }
 
 .input-row input[type="text"] {
-    width: 100%; 
+    width: 100%;
 }
 
 input[type="email"]:focus,
@@ -84,11 +84,11 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #007bb5;
-    transform: scale(1.05); 
+    transform: scale(1.05);
 }
 
 input[type="submit"]:active {
-    transform: scale(0.95); 
+    transform: scale(0.95);
 }
 
 .admin-option {
@@ -97,11 +97,33 @@ input[type="submit"]:active {
 }
 
 .admin-password {
-    display: none; 
+    display: none;
     margin: 10px 0;
 }
-.error{
+
+.error {
     color: red;
     margin-top: 7px;
     margin-bottom: 5px;
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    input[type="submit"] {
+        padding: 14px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        padding: 14px;
+    }
 }
