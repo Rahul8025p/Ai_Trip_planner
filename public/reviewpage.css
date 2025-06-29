@@ -19,6 +19,7 @@ body {
   display: flex;
   gap: 2rem;
   padding: 1rem;
+  flex-wrap: wrap;
 }
 
 .intro {
@@ -33,7 +34,7 @@ body {
   text-align: left;
   max-height: 500px;
   overflow-y: auto;
-  margin-top:80px;
+  margin-top: 80px;
 }
 
 .intro h2 {
@@ -82,12 +83,12 @@ body {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .review img {
   width: 120px;
   height: 120px;
-  /* border-radius: 50%; */
   object-fit: cover;
 }
 
@@ -111,27 +112,53 @@ body {
 }
 
 .delete-btn {
-  background-color: #ff4d4d; /* Red background */
-  color: white; /* White text */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 10px 15px; /* Padding for size */
-  font-size: 14px; /* Font size */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .delete-btn:hover {
-  background-color: #e60000; /* Darker red on hover */
-  transform: scale(1.05); /* Slight zoom effect */
+  background-color: #e60000;
+  transform: scale(1.05);
 }
 
 .delete-btn:active {
-  background-color: #cc0000; /* Even darker red when clicked */
-  transform: scale(1); /* Reset zoom on click */
+  background-color: #cc0000;
+  transform: scale(1);
 }
 
 .delete-btn:focus {
-  outline: none; /* Remove default focus outline */
-  box-shadow: 0 0 4px 2px rgba(255, 77, 77, 0.7); /* Add a subtle focus shadow */
+  outline: none;
+  box-shadow: 0 0 4px 2px rgba(255, 77, 77, 0.7);
+}
+
+@media (max-width: 768px) {
+  .review-section {
+    flex-direction: column;
+  }
+
+  .intro,
+  .reviews {
+    max-height: none;
+    margin-top: 20px;
+  }
+
+  .review {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .review img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .review blockquote {
+    font-size: 0.95rem;
+  }
 }
