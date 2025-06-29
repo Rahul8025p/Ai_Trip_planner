@@ -62,3 +62,32 @@ h1 {
 .welcome{
     margin-top: 20px;
 }
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .trip-card {
+    height: auto;
+    padding: 15px;
+  }
+
+  .review-card img {
+    height: 200px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .review-card img {
+    height: 180px;
+  }
+
+  .trip-card {
+    padding: 10px;
+  }
+}
