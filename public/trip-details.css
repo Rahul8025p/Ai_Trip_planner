@@ -313,3 +313,40 @@ input#days {
         transform: rotate(360deg);
     }
 }
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .card {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .preferences-container {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    width: 100%;
+    padding: 1rem;
+  }
+}
