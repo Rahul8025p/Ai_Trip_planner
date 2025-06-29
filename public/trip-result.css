@@ -350,3 +350,84 @@ h2 {
     border: 1px solid #ddd;
     border-radius: 4px;
 }
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .trip-info {
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1rem;
+  }
+
+  .hotel-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .place {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .details {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .details img {
+    width: 100%;
+    height: auto;
+  }
+
+  .info h3, .info p {
+    text-align: center;
+  }
+
+  textarea {
+    width: 100%;
+    height: 100px;
+  }
+
+  .modal-content {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .hotel-card img {
+    height: 200px;
+  }
+
+  .image-section img {
+    width: 95%;
+    max-height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hotel-card img {
+    height: 180px;
+  }
+
+  .place {
+    padding: 8px;
+  }
+
+  .card {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .profile-icon {
+    font-size: 32px;
+    margin-right: 0;
+  }
+
+  .custom-alert {
+    width: 90%;
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+}
