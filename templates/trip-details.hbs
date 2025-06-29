@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="image.png">
+    <title>Create Trip</title>
+    <link rel="stylesheet" href="trip-details.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="image.png" alt="Logo">
+            <span>Campus Routes</span>
+        </div>
+        <a href="/user.hbs" class="profile-icon">👤</a>
+    </header>
+
+    <main>
+        <div class="preferences-container">
+            <h1>Tell us Your Travel Preferences 🏕️🌴</h1>
+            <p>Just provide some basic information, and our trip planner will generate a customized itinerary based on your preferences.</p>
+
+            <form action="/create-trip" method="POST">
+                <label for="destination">What is your destination of choice?</label>
+                <input type="text" id="destination" name="destination" placeholder="Search a location" required />
+                <ul id="suggestions-list"></ul>
+                <label for="days">How many days are you planning the trip?</label>
+                <input type="number" id="days" name="days" placeholder="Ex. 3" required />
+
+                <div>
+                    <h2 class="section-title">What is Your Budget?</h2>
+                    <div class="grid-container" id="budget-options">
+                        <div class="card budget-card" data-value="cheap">
+                            <div class="icon">📉</div>
+                            <h2 class="font-bold text-lg">Cheap</h2>
+                            <h2 class="text-sm text-gray-500">Stay conscious of costs</h2>
+                        </div>
+                        <div class="card budget-card" data-value="Moderate">
+                            <div class="icon">💰</div>
+                            <h2 class="font-bold text-lg">Moderate</h2>
+                            <h2 class="text-sm text-gray-500">Keep cost on the average side</h2>
+                        </div>
+                        <div class="card budget-card" data-value="luxury">
+                            <div class="icon">💸</div>
+                            <h2 class="font-bold text-lg">Luxury</h2>
+                            <h2 class="text-sm text-gray-500">Don’t worry about cost</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Traveller Cards -->
+                <div>
+                    <h2 class="section-title">Who do you plan to travel with?</h2>
+                    <div class="grid-container" id="traveller-options">
+                        <div class="card traveller-card" data-value="JustMe">
+                            <div class="icon">✈️</div>
+                            <h2 class="font-bold text-lg">Just Me</h2>
+                            <h2 class="text-sm text-gray-500">A sole traveler in exploration</h2>
+                        </div>
+                        <div class="card traveller-card" data-value="couple">
+                            <div class="icon">🥂</div>
+                            <h2 class="font-bold text-lg">Couple</h2>
+                            <h2 class="text-sm text-gray-500">Two travelers in tandem</h2>
+                        </div>
+                        <div class="card traveller-card" data-value="family">
+                            <div class="icon">🏡</div>
+                            <h2 class="font-bold text-lg">Family</h2>
+                            <h2 class="text-sm text-gray-500">A group of fun-loving adventurers</h2>
+                        </div>
+                        <div class="card traveller-card" data-value="friends">
+                            <div class="icon">👫</div>
+                            <h2 class="font-bold text-lg">Friends</h2>
+                            <h2 class="text-sm text-gray-500">A bunch of thrill-seekers</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="hidden" name="budget" id="budget-input">
+                <input type="hidden" name="traveller" id="traveller-input">
+
+                <button type="submit" class="generate-trip-btn">Generate Trip</button>
+            </form>
+            <div id="loadingOverlay" class="loading-overlay hidden" aria-hidden="true">
+                <div class="loading-box" aria-live="polite">
+                    <div class="loading-spinner"></div>
+                    <h2>Generating recommendations</h2>
+                    <p>Your selected destination is a great choice. We’re gathering the best recommendations for you...</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+        const budgetCards = document.querySelectorAll('.budget-card');
+        const travellerCards = document.querySelectorAll('.traveller-card');
+        const budgetInput = document.getElementById('budget-input');
+        const travellerInput = document.getElementById('traveller-input');
+        const destinationInput = document.getElementById('destination');
+        const suggestionsList = document.getElementById('suggestions-list');
+
+        const handleCardSelection = (cards, inputField) =>{
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    cards.forEach(c => c.classList.remove('selected'));
+                    card.classList.add('selected');
+                    inputField.value = card.getAttribute('data-value');
+                });
+            });
+        };
+        handleCardSelection(budgetCards, budgetInput);
+        handleCardSelection(travellerCards, travellerInput);
+
+    // Autofetch logic for destination field
+            const fetchSuggestions = async (input) => {
+            const url = `https://nominatim.openstreetmap.org/search?format=json&q=${input}`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching suggestions:', error);
+                return [];
+            }
+        };
+
+        destinationInput.addEventListener('input', async () => {
+            const query = destinationInput.value.trim();
+            if (query.length >= 2) {
+                const suggestions = await fetchSuggestions(query);
+                
+                suggestionsList.innerHTML = '';
+
+                suggestions.forEach(suggestion => {
+                    const li = document.createElement('li');
+                    li.textContent = suggestion.display_name;
+                    li.addEventListener('click', () => {
+                        destinationInput.value = suggestion.display_name;
+                        suggestionsList.innerHTML = ''; 
+                    });
+                    suggestionsList.appendChild(li);
+                });
+            } else {
+                suggestionsList.innerHTML = '';
+            }
+        });
+        const form = document.querySelector('form');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+
+        /*form.addEventListener('submit', (event) => {
+            loadingOverlay.classList.remove('hidden');
+            submitButton.disabled = true;
+            setTimeout(() => {
+                form.submit(); 
+            }, 400); 
+        });*/
+    </script>
+</body>
+</html>

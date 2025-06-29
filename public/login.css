@@ -1,0 +1,111 @@
+/* Style for the login page */
+body {
+    background-image: url('Screenshot\ 2024-09-11\ 121636.png');
+    background-size: cover;
+    background-position: center;;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Ensure body takes full viewport height */
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    animation: fadeInBackground 2s ease-in-out; /* Animation for background */
+}
+
+@keyframes fadeInBackground {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.container {
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    margin-top: 130px;
+    animation: slideIn 1.5s ease-out; /* Animation for form container */
+}
+
+@keyframes slideIn {
+    0% { transform: translateY(-50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    animation: fadeInTitle 2s ease-out; /* Animation for the title */
+}
+
+@keyframes fadeInTitle {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: all 0.3s ease; /* Smooth transition for input focus */
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.2);
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+input[type="submit"]:active {
+    transform: scale(0.95); /* Press-down effect */
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #4caf50;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #45a049;
+}
+
+.admin-option {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.admin-password {
+    display: none; 
+    margin: 10px 0;
+}
+.error{
+    color: red;
+    margin-top: 7px;
+    margin-bottom: 5px;
+}

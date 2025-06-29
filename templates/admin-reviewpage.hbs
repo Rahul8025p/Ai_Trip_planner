@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Reviews</title>
+    <link rel="stylesheet" href="/reviewpage.css">
+</head>
+<body>
+    <section class="review-section">
+        <div class="intro">
+            <h2>Read what our customers love about us</h2>
+            <p>Over companies from diverse sectors consult us to enhance the user experience of their products and services.</p>
+            <p>We have helped companies increase their customer base and generate multifold revenue with our service.</p>
+            <button>Read our success stories</button>
+        </div>
+        <div class="reviews">
+            {{#each reviews}}
+            <div class="review">
+                {{#if this.photoPath}}
+                <img src="{{this.photoPath}}" alt="{{userId.name}}'s photo">
+                {{else}}
+                <img src="data:image/png;base64,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" alt="Default customer photo">
+                {{/if}}
+                <div class="review-content">
+                    <blockquote>“{{this.reviewText}}”</blockquote>
+                    <p>Rating: {{this.rating}}/5</p>
+                    <p><small>{{formatDate this.createdAt}}</small></p>
+                    <button class="delete-btn" data-id="{{this._id}}">Del</button>
+                </div>
+
+            </div>
+            {{/each}}
+        </div>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const deleteButtons = document.querySelectorAll(".delete-btn");
+
+            deleteButtons.forEach((button) => {
+                button.addEventListener("click", async (event) => {
+                const reviewId = event.target.getAttribute("data-id");
+
+                const response = await fetch(`/reviews/${reviewId}`, {
+                    method: "DELETE",
+                });
+
+                if (response.ok) {
+                    alert("Review deleted successfully");
+                    button.closest(".review-card").remove(); // Update UI
+                } else {
+                    alert("Failed to delete the review");
+                }
+                });
+            });
+        });
+        </script>
+</body>
+</html>

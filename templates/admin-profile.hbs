@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Details</title>
+    <link rel="icon" href="image.png">
+    <link rel="stylesheet" href="userprofile.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Account Settings</h1>
+        <div class="settings-panel">
+            <div class="sidebar">
+                <div class="profile">
+                    {{!-- <img src="" alt="Profile Photo"> --}}
+                    <img src="/{{user.profilePhoto}}" alt="profile" />
+                    <h2>{{user.name}}</h2>
+                </div>
+                <ul class="menu">
+                    <li class="active"><a href="/admin-user.hbs" class="account">Account</a></li>
+                    {{!-- <li><a href="/my-trips" class="my-trips">My Trips</a></li> --}}
+                    <li><a href="/admin-review.hbs" class="my-trips">User Reviews</a></li>
+                    <li><a href="/trip-images.hbs" class="my-trips">Our Users Trips</a></li>
+                    <li><a href="/uploads.hbs" class="my-trips">Edit Profile Photo</a></li>
+                    <li><a href="/forgot-password" class="my-trips">Change Password</a></li>
+                </ul>
+            </div>
+            <div class="form-section">
+                <h2>Account Settings</h2>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" placeholder="Rahul">
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" placeholder="Pallabothula">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="{{user.email}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="+91 9876543215">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="company">Enrollment Number</label>
+                            <input type="text" id="company" placeholder="{{user.enrollmentnumber}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="designation">Designation</label>
+                            <input type="text" id="designation" placeholder="UI Developer">
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="bio">Bio</label>
+                        <textarea id="bio" placeholder="Write something about yourself..."></textarea>
+                    </div>
+                    <div class="button-row">
+                        <button type="submit" class="btn-update">Update</button>
+                        <button type="button" class="btn-cancel">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+    document.querySelector('.btn-update').addEventListener('click', async (e) => {
+        e.preventDefault();
+        
+        const firstName = document.getElementById('first-name').value;
+        const lastName = document.getElementById('last-name').value;
+        const enrollmentNumber = document.getElementById('company').value;
+        const email = document.getElementById('email').value;
+        
+        try {
+            const response = await fetch('/update-user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ firstName, lastName, enrollmentNumber, email })
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                alert("Profile updated successfully");
+            } else {
+                alert(result.error || "Failed to update profile");
+            }
+        } catch (error) {
+            console.error("Error updating profile:", error);
+        }
+    });
+</script>
+
+</body>
+</html>

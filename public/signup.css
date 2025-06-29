@@ -1,0 +1,107 @@
+body {
+    background-image: url('Screenshot\ 2024-09-11\ 121636.png');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-attachment: scroll;
+    animation: fadeInBackground 2s ease-in-out;
+}
+
+@keyframes fadeInBackground {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.container {
+    width: 350px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.95);
+    animation: slideIn 1.5s ease-out;
+}
+
+@keyframes slideIn {
+    0% { transform: translateY(-50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    animation: fadeInTitle 2s ease-out;
+}
+
+@keyframes fadeInTitle {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+.input-row input[type="text"] {
+    width: 100%; 
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+.input-row input[type="text"]:focus {
+    border-color: #007bb5;
+    box-shadow: 0 0 10px rgba(0, 123, 181, 0.2);
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #008cba;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #007bb5;
+    transform: scale(1.05); 
+}
+
+input[type="submit"]:active {
+    transform: scale(0.95); 
+}
+
+.admin-option {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.admin-password {
+    display: none; 
+    margin: 10px 0;
+}
+.error{
+    color: red;
+    margin-top: 7px;
+    margin-bottom: 5px;
+}

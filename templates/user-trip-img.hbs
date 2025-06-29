@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations</title>
+    <link rel="stylesheet" href="user-trip-img.css">
+</head>
+<body>
+    <h1 class="welcome">Welcome</h1>
+    <div class="container">
+        {{#each user.trips}}
+            {{#if this.reviews.length}} 
+                <div class="trip-card">
+                    <h3>{{this.destination}}</h3>
+                    <div class="reviews-grid">
+                        {{#each this.reviews}}
+                            {{#if this.photoPath}}
+                                <div class="review-card">
+                                    <img src="{{this.photoPath}}" alt="Photo">
+                                </div>
+                            {{/if}}
+                        {{/each}}
+                    </div>
+                </div>
+            {{/if}}
+        {{/each}}
+    </div>
+</body>
+</html>

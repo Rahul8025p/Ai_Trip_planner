@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="image.png">
+    <title>My Trips</title>
+    <link rel="stylesheet" href="my-trips.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="image.png" alt="Logo" width="40" height="40">
+            <span><strong>Campus Routes</strong></span>
+        </div>
+        <a href="/user.hbs" class="profile-icon">👤</a>
+    </header>
+    <div class="container">
+        <h1>My Trips</h1>
+
+        {{#if trips.length}}
+            <div class="trip-list">
+                {{#each trips}}
+                <a href="/mytripresults?tripId={{this._id}}" class="trip-card-link">
+                    <div class="trip-card">
+                        <img src="{{this.imageUrl}}" alt="Image of {{this.destination}}" class="trip-image">
+                        <div class="trip-details">
+                            <h2>{{this.destination}}</h2>
+                            <p>{{this.days}} Days trip with {{this.budget}} Budget</p>
+                        </div>
+                    </div>
+                </a>
+                {{/each}}
+            </div>
+        {{else}}
+            <p>You don't have any saved trips.</p>
+        {{/if}}
+    </div>
+</body>
+</html>

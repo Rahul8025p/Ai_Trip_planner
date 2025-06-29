@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="image.png">
+    <title>Trip Itinerary</title>
+    <link rel="stylesheet" href="trip-result.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="image.png" alt="Logo" width="40" height="40">
+            <span><strong>Campus Routes</strong></span>
+        </div>
+        <nav>
+            <a class="review-btn" onclick="openReviewModal()">Leave a Review</a>
+            <div id="reviewModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeReviewModal()">&times;</span>
+                    <h2>Your Review</h2>
+                    <p>Share your experience with us!</p>
+                    <div class="star-rating">
+                        <span class="star" onclick="setRating(1)">★</span>
+                        <span class="star" onclick="setRating(2)">★</span>
+                        <span class="star" onclick="setRating(3)">★</span>
+                        <span class="star" onclick="setRating(4)">★</span>
+                        <span class="star" onclick="setRating(5)">★</span>
+                    </div>
+                    <textarea placeholder="Write your review here..."></textarea>
+                    <button class="submit-btn" onclick="submitReview()">Submit Review</button>
+                    <input type="hidden" id="destinationValue" value="{{trip.destination}}">
+                    <button class="cancel-btn" onclick="closeReviewModal()">Cancel</button>
+                </div>
+            </div>
+            <a href="/my-trips" class="nav-link">My Trips</a>
+            <a href="/user.hbs" class="profile-icon">👤</a>
+        </nav>
+    </header>
+
+    <section class="image-section">
+        <img src="{{destinationImage}}" alt="{{trip.destination}} Image">
+    </section>
+
+    <section>
+        <div class="trip-info">
+            <span>📅 {{trip.days}} Days</span>
+            <span>💰 {{trip.budget}} Budget</span>
+            <span>👥 Travelers: {{trip.traveller}}</span>
+        </div>
+    </section>
+
+    <section class="hotel-recommendations">
+        <h2>Hotel Recommendations</h2>
+        <div class="hotel-grid">
+            {{#each trip.hotels}}
+            <div class="hotel-card">
+                <img src="{{this.imageUrl}}" alt="{{this.name}} Image">
+                <h3>{{this.name}}</h3>
+                <p>📍 {{this.address}}</p>
+                <p>💲 {{this.price}} per night</p>
+                <p>⭐ {{this.rating}} stars</p>
+                <a href="https://www.google.com/maps/search/?api=1&query={{encodeURIComponent this.name}}%20{{encodeURIComponent this.address}}" target="_blank" style="text-decoration: none;">
+                    View on Google Maps
+                </a>
+            </div>
+            {{/each}}
+        </div>
+    </section>
+
+    <div class="container">
+        <h1>Places to Visit</h1>
+        {{#each trip.itinerary}}
+        <div class="day">
+           <h2>Day {{incrementIndex @index}}</h2>
+
+            {{#each this.places}}
+            <div class="place">
+                <div class="time">{{this.timing}}</div>
+                <div class="details">
+                     <img src="{{this.imageUrl}}" alt="{{this.placeName}} Image">
+                    <div class="info">
+                        <h3>{{this.placeName}}</h3>
+                        <p>{{this.placeDetails}}</p>
+                        <p>🕰️ {{this.timeTravel}}</p>
+                        <p>⭐ {{this.rating}}</p>
+                        {{!-- <a href="https://www.google.com/maps/search/?api=1&query={{encodeURIComponent this.placeName}}" target="_blank" style="text-decoration: none;">
+                         View on Google Maps
+                        </a> --}}
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+        </div>
+        {{/each}}
+    </div>
+    <div class="custom-alert" id="customAlert">Review added successfully</div>
+</body>
+       <script>
+        function openReviewModal() {
+        document.getElementById("reviewModal").style.display = "flex";
+    }
+
+    function closeReviewModal() {
+        document.getElementById("reviewModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById("reviewModal");
+        if (event.target === modal) {
+            closeReviewModal();
+        }
+    }
+
+    function setRating(rating) {
+        const stars = document.querySelectorAll(".star");
+        stars.forEach((star, index) => {
+            if (index < rating) {
+                star.classList.add("selected");
+            } else {
+                star.classList.remove("selected");
+            }
+        });
+    }
+    function showCustomAlert() {
+    const alert = document.getElementById("customAlert");
+    alert.style.display = "block";
+    setTimeout(() => {
+        alert.style.display = "none";
+    }, 3500);
+}
+
+    function submitReview() {
+    const reviewText = document.querySelector("textarea").value;
+    const selectedStars = document.querySelectorAll(".star.selected").length;
+    const destination = document.getElementById("destinationValue").value; 
+    fetch('/add-review', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            destination: destination,
+            rating: selectedStars,
+            reviewText: reviewText
+        })
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log("Review added successfully");
+            showCustomAlert();
+        } else {
+            console.error("Failed to add review");
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+    closeReviewModal();
+}
+    </script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="image.png">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Log In</h2>
+        <form action="/login" method="post">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            {{!-- <div class="admin-option">
+                <label>
+                    <input type="checkbox" id="adminCheckbox" onclick="toggleAdminPassword()"> Sign up as Admin
+                </label>
+            </div>
+            <input type="password" id="adminPassword" class="admin-password" name="adminPassword" placeholder="Admin Password"> --}}
+            <input type="submit" value="Login">
+        </form>
+        <a href="/signup">Create a New Account</a>
+        <a href="/forgot-password">Forgot Password?</a>
+    </div>
+    {{!-- <script>
+        function toggleAdminPassword() {
+            var adminPasswordField = document.getElementById("adminPassword");
+            var adminCheckbox = document.getElementById("adminCheckbox");
+            adminPasswordField.style.display = adminCheckbox.checked ? "block" : "none";
+        }
+    </script> --}}
+</body>
+</html>
