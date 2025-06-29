@@ -1,4 +1,3 @@
-/* Basic reset */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +5,6 @@
     font-family: Arial, sans-serif;
 }
 
-/* Body Styling */
 body {
     display: flex;
     justify-content: center;
@@ -16,7 +14,6 @@ body {
     color: #333;
 }
 
-/* Container Styling */
 h1 {
     text-align: center;
     margin-bottom: 20px;
@@ -32,7 +29,6 @@ form {
     max-width: 400px;
 }
 
-/* Textarea Styling */
 textarea {
     width: 100%;
     padding: 10px;
@@ -43,7 +39,6 @@ textarea {
     margin-bottom: 15px;
 }
 
-/* File Input Styling */
 input[type="file"] {
     font-size: 16px;
     color: #666;
@@ -51,7 +46,6 @@ input[type="file"] {
     cursor: pointer;
 }
 
-/* Preview Image Styling */
 #preview {
     display: none;
     margin-top: 10px;
@@ -60,7 +54,6 @@ input[type="file"] {
     border-radius: 4px;
 }
 
-/* Button Styling */
 button {
     width: 100%;
     padding: 10px;
@@ -75,4 +68,23 @@ button {
 
 button:hover {
     background-color: #45a049;
+}
+
+/* ✅ Mobile Responsive Enhancement */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+        height: auto;
+        align-items: flex-start;
+    }
+
+    form {
+        padding: 20px;
+        margin-top: 40px;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 17px;
+    }
 }
