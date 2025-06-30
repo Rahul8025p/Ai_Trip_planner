@@ -1,4 +1,3 @@
-![Screenshot 2025-06-29 193311](https://github.com/user-attachments/assets/4524a7b0-52ba-4d7c-b767-b38fc63f8993)👨‍💻 Project description
 
 📸 Screenshots
 
@@ -26,7 +25,7 @@
 ### 🧭 Destination & Travel Details Input
 > Users input destination, days, budget, and type of travelers.
 
-![Screenshot 2025-06-29 193311](https://github.com/user-attachments/assets/99911e74-5973-4dbc-959b-f0f33bf5f6b5)
+![Screenshot 2025-06-29 193311](https://github.com/user-attachments/assets/71ed4dd4-c22d-4b7d-ae96-1cad25072456)
 
 
 ---
@@ -34,7 +33,8 @@
 ### 🧳 Dynamic Trip Plan Output
 > Shows city image, duration, budget, and number of travelers.
 
-![Screenshot 2025-06-29 193348](https://github.com/user-attachments/assets/2547e0e1-e05c-4874-a354-1c1b95defee9)
+![Screenshot 2025-06-29 193348](https://github.com/user-attachments/assets/b2d0f3a9-1401-4166-98dd-cee896f441fe)
+
 
 
 ---
@@ -42,15 +42,14 @@
 ### 🏨 Hotel Recommendations
 > Hotels include name, price, ratings, address, and Google Maps links.
 
-![Screenshot 2025-06-29 193405](https://github.com/user-attachments/assets/c770df0a-0f68-4072-94b2-9ea1f07ce60d)
-
+![Screenshot 2025-06-29 193405](https://github.com/user-attachments/assets/6aa9ac18-a0c7-4b26-8f60-1ba4e803af4c)
 
 ---
 
 ### 📅 Day-Wise Itinerary
 > Auto-generated day plan with activity slots and ratings.
 
-![Screenshot 2025-06-29 193444](https://github.com/user-attachments/assets/feaf73d6-0031-4206-957c-bf70368982b1)
+![Screenshot 2025-06-29 193422](https://github.com/user-attachments/assets/03749830-a272-4b7a-9bd1-0f3a40519efd)
 
 
 ---
@@ -58,7 +57,7 @@
 ### 📂 My Trips Page
 > Displays all previously generated trips in a card-based UI.
 
-![Screenshot 2025-06-29 193422](https://github.com/user-attachments/assets/aa42fd9e-bef3-4db2-bbce-4518509fd54b)
+![Screenshot 2025-06-29 193444](https://github.com/user-attachments/assets/e947dce4-ecc5-42be-afc6-6e0da5a820de)
 
 
 ---
@@ -66,7 +65,8 @@
 ### ⭐ Add a Review Modal
 > Users can rate the trip and leave a review.
 
-![Screenshot 2025-06-29 193506](https://github.com/user-attachments/assets/4b088550-3bfb-4f7b-8a60-c42e59761b15)
+![Screenshot 2025-06-29 193506](https://github.com/user-attachments/assets/a158edd5-ccdf-4f21-9c1a-15273f913271)
+
 
 
 ---
@@ -74,7 +74,8 @@
 ### 👤 Account Settings Page
 > Users can manage profile info, trips, password, and bio.
 
-![Screenshot 2025-06-29 193522](https://github.com/user-attachments/assets/bb4005f9-8da2-46df-ad80-dceaac70cc51)
+![Uploading Screenshot 2025-06-29 193522.png…]()
+
 
 
 ---
