@@ -27,7 +27,8 @@ Description:
 ### 🧭 Destination & Travel Details Input
 > Users input destination, days, budget, and type of travelers.
 
-![Screenshot 2025-06-29 193311](https://github.com/user-attachments/assets/71ed4dd4-c22d-4b7d-ae96-1cad25072456)
+![Screenshot 2025-06-29 193311](https://github.com/user-attachments/assets/1e3c77ad-0140-4862-9f58-1f945fcb0656)
+
 
 
 ---
@@ -76,7 +77,7 @@ Description:
 ### 👤 Account Settings Page
 > Users can manage profile info, trips, password, and bio.
 
-![Uploading Screenshot 2025-06-29 193522.png…]()
+![Screenshot 2025-06-29 193522](https://github.com/user-attachments/assets/0ca4bef9-11be-4d69-9434-9fa45baa8d32)
 
 
 
